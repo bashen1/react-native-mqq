@@ -1,4 +1,4 @@
-# react-native-qq [![npm version](https://badge.fury.io/js/react-native-qq.svg)](http://badge.fury.io/js/react-native-qq)
+# react-native-mqq [![npm version](https://badge.fury.io/js/react-native-qq.svg)](http://badge.fury.io/js/react-native-qq)
 
 React Native的QQ登录插件, react-native版本需要0.40.0及以上
 
@@ -7,18 +7,18 @@ React Native的QQ登录插件, react-native版本需要0.40.0及以上
 ### 首先安装npm包
 
 ```bash
-yarn add react-native-qq
+yarn add react-native-mqq
 ```
 或
 
 ```bash
-npm install react-native-qq --save
+npm install react-native-mqq --save
 ```
 
 然后执行
 
 ```bash
-react-native link react-native-qq
+react-native link react-native-mqq
 ```
 
 ### 安装iOS工程
@@ -103,7 +103,7 @@ manifestPlaceholders = [
 ### 引入包
 
 ```
-import * as QQAPI from 'react-native-qq';
+import * as QQAPI from 'react-native-mqq';
 ```
 
 ### API
