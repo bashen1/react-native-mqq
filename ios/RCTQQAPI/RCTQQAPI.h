@@ -6,8 +6,11 @@
 //  Copyright © 2015 erica. All rights reserved.
 //
 
+#if __has_include(<React/RCTBridge.h>)
 #import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#else
+#import "RCTBridgeModule.h"
+#endif
 
 #define RCTQQShareTypeNews @"news"
 #define RCTQQShareTypeImage @"image"
@@ -21,6 +24,6 @@
 #define RCTQQShareWebpageUrl @"webpageUrl"
 #define RCTQQShareImageUrl @"imageUrl"
 
-@interface RCTQQAPI : RCTEventEmitter<RCTBridgeModule>
+@interface RCTQQAPI : NSObject<RCTBridgeModule>
 
 @end
