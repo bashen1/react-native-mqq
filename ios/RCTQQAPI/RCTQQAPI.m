@@ -8,7 +8,6 @@
 
 #import "RCTQQAPI.h"
 #import <TencentOpenAPI/TencentOAuth.h>
-#import <TencentOpenAPI/TencentOAuthObject.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/QQApiInterfaceObject.h>
 
@@ -29,18 +28,9 @@
 
 @implementation RCTQQAPI
 
-@synthesize bridge = _bridge;
+//@synthesize bridge = _bridge;
 
 RCT_EXPORT_MODULE();
-
-- (dispatch_queue_t)methodQueue
-{
-    return dispatch_get_main_queue();
-}
-
-+ (BOOL) requiresMainQueueSetup {
-    return YES;
-}
 
 - (NSArray<NSString *> *)supportedEvents
 {
@@ -71,6 +61,15 @@ RCT_EXPORT_MODULE();
     else {
         [QQApiInterface handleOpenURL:[NSURL URLWithString:url] delegate:self];
     }
+}
+
+- (dispatch_queue_t)methodQueue
+{
+    return dispatch_get_main_queue();
+}
+
++ (BOOL) requiresMainQueueSetup {
+    return YES;
 }
 
 RCT_EXPORT_METHOD(isQQInstalled:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
@@ -128,13 +127,13 @@ RCT_EXPORT_METHOD(logout)
 
 - (void)_shareToQQWithData:(NSDictionary *)aData scene:(int)aScene resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject{
     NSString *imageUrl = aData[RCTQQShareImageUrl];
-    if (imageUrl.length && _bridge.imageLoader) {
+    if (imageUrl.length && self.bridge.imageLoader) {
         CGSize size = CGSizeZero;
         if (![aData[RCTQQShareType] isEqualToString:RCTQQShareTypeImage]) {
             CGFloat thumbImageSize = 80;
             size = CGSizeMake(thumbImageSize,thumbImageSize);
         }
-        [_bridge.imageLoader loadImageWithURLRequest:[RCTConvert NSURLRequest:imageUrl] callback:^(NSError *error, UIImage *image) {
+        [self.bridge.imageLoader loadImageWithURLRequest:[RCTConvert NSURLRequest:imageUrl] callback:^(NSError *error, UIImage *image) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self _shareToQQWithData:aData image:image scene:aScene resolve:resolve reject:reject];
             });
