@@ -1,6 +1,13 @@
-# react-native-mqq [![npm version](https://badge.fury.io/js/react-native-qq.svg)](http://badge.fury.io/js/react-native-qq)
+# react-native-mqq [![npm version](https://badge.fury.io/js/react-native-mqq.svg)](http://badge.fury.io/js/react-native-mqq)
+
+此库基于react-native-qq，在此感谢这个库的开发者们的贡献。
 
 React Native的QQ登录插件, react-native版本需要0.40.0及以上
+
+SDK版本：
+
+Android：3.5.13.83
+iOS：3.3.5
 
 ## 如何安装
 
@@ -107,6 +114,12 @@ import * as QQAPI from 'react-native-mqq';
 ```
 
 ### API
+
+#### QQAPI.init()
+
+仅Android有效
+
+初始化，调用其他api时请先调用该api，隐私合规后可调用此API进行初始化操作
 
 #### QQAPI.login([scopes])
 
