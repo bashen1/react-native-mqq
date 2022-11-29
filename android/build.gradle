@@ -31,6 +31,6 @@ repositories {
 
 dependencies {
   implementation 'com.facebook.react:react-native:+'
-  implementation files('libs/open_sdk_r2973327_lite.jar')
+  implementation files('libs/open_sdk_3.5.13.83_rc564928_lite.jar')
 }
 
