@@ -9,17 +9,17 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 
-#define RCTQQShareTypeNews @"news"
-#define RCTQQShareTypeImage @"image"
-#define RCTQQShareTypeText @"text"
-#define RCTQQShareTypeVideo @"video"
-#define RCTQQShareTypeAudio @"audio"
+#define RCTQQShareTypeNews    @"news"
+#define RCTQQShareTypeImage   @"image"
+#define RCTQQShareTypeText    @"text"
+#define RCTQQShareTypeVideo   @"video"
+#define RCTQQShareTypeAudio   @"audio"
 
-#define RCTQQShareType @"type"
-#define RCTQQShareTitle @"title"
+#define RCTQQShareType        @"type"
+#define RCTQQShareTitle       @"title"
 #define RCTQQShareDescription @"description"
-#define RCTQQShareWebpageUrl @"webpageUrl"
-#define RCTQQShareImageUrl @"imageUrl"
+#define RCTQQShareWebpageUrl  @"webpageUrl"
+#define RCTQQShareImageUrl    @"imageUrl"
 
 @interface RCTQQAPI : RCTEventEmitter
 
