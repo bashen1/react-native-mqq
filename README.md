@@ -1,4 +1,6 @@
-# react-native-mqq [![npm version](https://badge.fury.io/js/react-native-mqq.svg)](http://badge.fury.io/js/react-native-mqq)
+# react-native-mqq
+
+[![npm version](https://badge.fury.io/js/react-native-mqq.svg)](http://badge.fury.io/js/react-native-mqq)
 
 此库基于react-native-qq，在此感谢这个库的开发者们的贡献。
 
@@ -7,6 +9,7 @@ React Native的QQ登录插件, react-native版本需要0.40.0及以上
 SDK版本：
 
 Android：3.5.13.83
+
 iOS：3.3.5
 
 ## 如何安装
@@ -16,6 +19,7 @@ iOS：3.3.5
 ```bash
 yarn add react-native-mqq
 ```
+
 或
 
 ```bash
@@ -39,7 +43,9 @@ react-native link react-native-mqq
 在 `Apple LLVM X.X - Custom Compiler Flags->Link->Other C Flags`中加入 `-isystem "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI"`
 
 在工程plist文件中加入qq白名单：(ios9以上必须)
+
 请以文本方式打开Info.plist，在其中添加
+
 ```xml
 <key>LSApplicationQueriesSchemes</key>
 <array>
@@ -74,7 +80,7 @@ react-native link react-native-mqq
 
 在你工程的`AppDelegate.m`文件中添加如下代码：
 
-```
+```oc
 #import <React/RCTLinkingManager.h>
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -87,7 +93,7 @@ react-native link react-native-mqq
 
 在`android/app/build.gradle`里，defaultConfig栏目下添加如下代码：
 
-```
+```oc
 manifestPlaceholders = [
     QQ_APPID: "<平台申请的APPID>"
 ]
@@ -109,7 +115,7 @@ manifestPlaceholders = [
 
 ### 引入包
 
-```
+```js
 import * as QQAPI from 'react-native-mqq';
 ```
 
@@ -131,10 +137,10 @@ import * as QQAPI from 'react-native-mqq';
 
 ```javascript
 {
-	"access_token": "CAF0085A2AB8FDE7903C97F4792ECBC3",
-	"openid": "0E00BA738F6BB55731A5BBC59746E88D"
-	"expires_in": "1458208143094.6"	
-	"oauth_consumer_key": "12345"
+    "access_token": "CAF0085A2AB8FDE7903C97F4792ECBC3",
+    "openid": "0E00BA738F6BB55731A5BBC59746E88D",
+    "expires_in": "1458208143094.6",
+    "oauth_consumer_key": "12345"
 }
 ```
 
@@ -148,23 +154,22 @@ import * as QQAPI from 'react-native-mqq';
 
 ```javascript
 // 分享图文消息
-{	
-	type: 'news',
-	title: 分享标题,
-	description: 描述,
-	webpageUrl: 网页地址,
-	imageUrl: 远程图片地址,
+{
+    type: 'news',
+    title: '分享标题',
+    description: '描述',
+    webpageUrl: '网页地址',
+    imageUrl: '远程图片地址',
 }
-
 // 其余格式尚未实现。
 ```
 
 ## 常见问题
 
-#### Android: 调用QQAPI.login()没有反应
+### Android: 调用QQAPI.login()没有反应
 
 通常出现这个原因是因为Manifest没有配置好，检查Manifest中有关Activity的配置。
 
-#### Android: 已经成功激活QQ登录，但回调没有被执行
+### Android: 已经成功激活QQ登录，但回调没有被执行
 
 通常出现这个原因是因为MainActivity.java中缺少onActivityResult的调用。
