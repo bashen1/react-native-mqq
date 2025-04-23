@@ -176,6 +176,10 @@ RCT_EXPORT_METHOD(logout) {
     [_qqapi logout:nil];
 }
 
+RCT_EXPORT_METHOD(initSDK) {
+    [TencentOAuth setIsUserAgreedAuthorization:YES];
+}
+
 - (void)_shareToQQWithData:(NSDictionary *)aData scene:(int)aScene resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
     NSString *imageUrl = aData[RCTQQShareImageUrl];
 

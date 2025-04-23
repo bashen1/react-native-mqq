@@ -14,10 +14,10 @@ Pod::Spec.new do |s|
   s.source        = { :git => "https://github.com/bashen1/react-native-qq.git", :tag => "master" }
   s.source_files  = "ios/RCTQQAPI/RCTQQAPI.{h,m}"
   s.requires_arc  = true
-  s.vendored_frameworks = "ios/RCTQQAPI/TencentOpenAPI.framework"
+  s.vendored_frameworks = "ios/RCTQQAPI/*.xcframework"
   s.libraries = 'iconv', 'sqlite3', 'c++', 'z'
-  
-  s.dependency "React"
+
+  s.dependency "React-Core"
 
 end
 
