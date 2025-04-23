@@ -10,7 +10,7 @@ SDK版本：
 
 Android：3.5.13.83
 
-iOS：3.3.5
+iOS：3.5.17.4
 
 ## 如何安装
 
@@ -33,14 +33,6 @@ react-native link react-native-mqq
 ```
 
 ### 安装iOS工程
-
-在工程target的`Build Phases->Link Binary with Libraries`中加入`libRCTQQAPI.a、libiconv.tbd、libsqlite3.tbd、libz.tbd、libc++.tbd`
-
-在 `Build Settings->Search Paths->Framework Search Paths`（如果你找不到Framework Search Paths，请注意选择Build Settings下方的All，而不是Basic） 中加入路径 `$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI`
-
-在 `Build Settings->Link->Other Linker Flags` 中加入 `-framework "TencentOpenAPI"`
-
-在 `Apple LLVM X.X - Custom Compiler Flags->Link->Other C Flags`中加入 `-isystem "$(SRCROOT)/../node_modules/react-native-qq/ios/RCTQQAPI"`
 
 在工程plist文件中加入qq白名单：(ios9以上必须)
 
@@ -117,42 +109,28 @@ manifestPlaceholders = [
 
 ```js
 import * as QQAPI from 'react-native-mqq';
-```
 
-### API
+// 初始化，调用其他api时请先调用该api，隐私合规后可调用此API进行初始化操作
+QQAPI.init();
 
-#### QQAPI.init()
+// 调用QQ登录，可能会跳转到QQ应用或者打开一个网页浏览器以供用户登录。在本次login返回前，所有接下来的login调用都会直接失败。
+// - scopes: 登录所申请的权限，默认为get_simple_userinfo。 需要多个权限时，以逗号分隔。
+// 返回一个`Promise`对象。成功时的回调为一个类似这样的对象：
+QQAPI.login([scopes]);
 
-仅Android有效
-
-初始化，调用其他api时请先调用该api，隐私合规后可调用此API进行初始化操作
-
-#### QQAPI.login([scopes])
-
-- scopes: 登录所申请的权限，默认为get_simple_userinfo。 需要多个权限时，以逗号分隔。
-
-调用QQ登录，可能会跳转到QQ应用或者打开一个网页浏览器以供用户登录。在本次login返回前，所有接下来的login调用都会直接失败。
-
-返回一个`Promise`对象。成功时的回调为一个类似这样的对象：
-
-```javascript
 {
     "access_token": "CAF0085A2AB8FDE7903C97F4792ECBC3",
     "openid": "0E00BA738F6BB55731A5BBC59746E88D",
     "expires_in": "1458208143094.6",
     "oauth_consumer_key": "12345"
 }
-```
 
-#### QQAPI.shareToQQ(data)
+// 分享到QQ好友，参数同QQAPI.shareToQzone，返回一个`Promise`对象
+QQAPI.shareToQQ(data);
 
-分享到QQ好友，参数同QQAPI.shareToQzone，返回一个`Promise`对象
+// 分享到QZone，参数为一个object，可以有如下的形式：
+QQAPI.shareToQzone(data)
 
-#### QQAPI.shareToQzone(data)
-
-分享到QZone，参数为一个object，可以有如下的形式：
-
-```javascript
 // 分享图文消息
 {
     type: 'news',
@@ -161,7 +139,6 @@ import * as QQAPI from 'react-native-mqq';
     webpageUrl: '网页地址',
     imageUrl: '远程图片地址',
 }
-// 其余格式尚未实现。
 ```
 
 ## 常见问题
