@@ -1,6 +1,6 @@
 {
   "name": "react-native-mqq",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "QQ Login&Share support in React Native.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bashen1/react-native-qq.git"
+    "url": "git+https://github.com/bashen1/react-native-mqq.git"
   },
   "keywords": [
     "react-native",
@@ -18,7 +18,7 @@
   "author": "tdzl2003",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bashen1/react-native-qq/issues"
+    "url": "https://github.com/bashen1/react-native-mqq/issues"
   },
-  "homepage": "https://github.com/bashen1/react-native-qq#readme"
+  "homepage": "https://github.com/bashen1/react-native-mqq#readme"
 }
