@@ -97,7 +97,7 @@ public class QQModule extends ReactContextBaseJavaModule implements IUiListener,
     }
 
     @ReactMethod
-    public void init(Promise promise) {
+    public void initSDK(Promise promise) {
         if (api == null) {
             Tencent.setIsPermissionGranted(true); //标识已经同意隐私合规，否则无法调用API
             String packageNames = null;

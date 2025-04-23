@@ -75,9 +75,7 @@ export function logout(){
 }
 
 export function init(){
-    if (Platform.OS === 'android') {
-        QQAPI.init()
-    }
+    QQAPI.initSDK()
 }
 
 
