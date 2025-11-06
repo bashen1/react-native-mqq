@@ -81,14 +81,9 @@ public class QQModule extends ReactContextBaseJavaModule implements IUiListener,
     }
 
     @Override
-    public void onCatalystInstanceDestroy() {
-
-        if (api != null) {
-            api = null;
-        }
+    public void invalidate() {
+        api = null;
         getReactApplicationContext().removeActivityEventListener(this);
-
-        super.onCatalystInstanceDestroy();
     }
 
     @Override
@@ -123,7 +118,7 @@ public class QQModule extends ReactContextBaseJavaModule implements IUiListener,
             promise.reject(NOT_INIT);
             return;
         }
-        if (api.isSupportSSOLogin(getCurrentActivity())) {
+        if (api.isSupportSSOLogin(getReactApplicationContext().getCurrentActivity())) {
             promise.resolve(true);
         } else {
             promise.reject("not installed");
@@ -136,7 +131,7 @@ public class QQModule extends ReactContextBaseJavaModule implements IUiListener,
             promise.reject(NOT_INIT);
             return;
         }
-        if (api.isSupportSSOLogin(getCurrentActivity())) {
+        if (api.isSupportSSOLogin(getReactApplicationContext().getCurrentActivity())) {
             promise.resolve(true);
         } else {
             promise.reject("not support");
@@ -151,7 +146,7 @@ public class QQModule extends ReactContextBaseJavaModule implements IUiListener,
         }
         this.isLogin = true;
         if (!api.isSessionValid()) {
-            api.login(getCurrentActivity(), scopes == null ? "get_simple_userinfo" : scopes, this);
+            api.login(getReactApplicationContext().getCurrentActivity(), scopes == null ? "get_simple_userinfo" : scopes, this);
             promise.resolve(null);
         } else {
             promise.reject(INVOKE_FAILED);
@@ -221,11 +216,11 @@ public class QQModule extends ReactContextBaseJavaModule implements IUiListener,
         if (scene == 0) {
             // Share to QQ.
             bundle.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_ITEM_HIDE);
-            api.shareToQQ(getCurrentActivity(), bundle, this);
+            api.shareToQQ(getReactApplicationContext().getCurrentActivity(), bundle, this);
         } else if (scene == 1) {
             // Share to Qzone.
             bundle.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
-            api.shareToQQ(getCurrentActivity(), bundle, this);
+            api.shareToQQ(getReactApplicationContext().getCurrentActivity(), bundle, this);
         }
     }
 
