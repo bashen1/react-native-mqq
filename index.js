@@ -3,7 +3,7 @@
  */
 import { NativeModules, NativeEventEmitter, Platform } from 'react-native';
 
-const { QQAPI } = NativeModules;
+const QQAPI = NativeModules.QQAPI || NativeModules.RCTQQAPI;
 
 const QQAPIEmitter = new NativeEventEmitter(QQAPI);
 
